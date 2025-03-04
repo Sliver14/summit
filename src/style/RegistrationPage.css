@@ -1,0 +1,149 @@
+/* Style for the Registration Page */
+.registrationPage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 0.8rem;
+    /* justify-content: center; */
+    /* margin-top: 3em; */
+    align-items: center;
+  }
+  
+  .summitregistration {
+    background-color: #0056b3;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10em;
+    color: #fff;
+    font-size: 85%;
+    background-image: linear-gradient(rgba(76, 79, 236, 0.281), rgba(154, 41, 230, 0.39)), url('../images//summit\ registration\ page\ design.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+  
+  }
+
+  .summit-title {
+    display: flex;
+    justify-content: center;
+    align-content : center;
+    width: 70%;
+    height: 10vh;
+    background-color: #fff;
+    /* padding: 0.3em 0.9em; */
+    opacity: 0.6;
+  }
+
+  .summit-title h1{
+    align-self: center;
+    opacity: 1;
+    color: black;
+  }
+  
+  .register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    /* background-color: #060b50; */
+    
+  }
+  /* .register_title{
+    color: #ffffff;
+  } */
+  
+  /* Style for the Form */
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    margin-bottom: 5px;
+    /* display: none; */
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input,
+  select {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #f8f8f8;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+  }
+  
+  button {
+    align-self: center;
+    width: 15em;
+    padding: 10px;
+    background-color: #3b44b9;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  
+  button:hover {
+    background-color: #0d73e0;
+  }
+  
+  .submit button {
+    margin-top: 20px;
+    background-color: #28a745;
+  }
+  
+  .submit button:hover {
+    background-color: #1e7e34;
+  }
+  
+  span {
+    color: #dc3545;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  
+
+  /* Styles Tablet */
+@media (min-width: 768px) {
+ 
+}
+
+  /* Styles for Desktop */
+@media (min-width: 1025px) {
+
+  .summitregistration {
+    height: 20em;
+  }
+
+  .registrationPage {
+    
+    font-size: 1rem;
+   
+  }
+ 
+}
