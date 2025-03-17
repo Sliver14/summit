@@ -17,9 +17,9 @@ function App() {
   return (
     <Router>      
       <Routes>
-        <Route path="/" element={<SummitFlyer />} />
-        {/* <Route path="/create-flyer" element={<SummitFlyer />} /> */}
-        <Route path="/registrationpage" element={<RegistrationPage />} />
+        <Route path="/" element={<RegistrationPage />} />
+        <Route path="/create-flyer" element={<SummitFlyer />} />
+        {/* <Route path="/registrationpage" element={<RegistrationPage />} /> */}
         <Route path="/principalsdashboard" element={<PrivateRoute><PrincipalsDashboard /></PrivateRoute>} />
         <Route path="/register" element={<Register />} />
         <Route path="/signin" element={<Signin />} />
