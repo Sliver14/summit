@@ -52,20 +52,20 @@ function Register() {
 
     password: Yup.string()
     .required("Password is required")
-    .min(8, "Password must be at least 8 characters long")
-    .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
-    .matches(/[a-z]/, "Password must contain at least one lowercase letter")
-    .matches(/[0-9]/, "Password must contain at least one number")
-    .matches(/[!@#$%^&*(),.?":{}|<>]/, "Password must contain at least one special character"),
+    .min(5, "Password must be at least 5 characters long")
+  //   .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+  //   .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+  //   .matches(/[0-9]/, "Password must contain at least one number")
+  //   .matches(/[!@#$%^&*(),.?":{}|<>]/, "Password must contain at least one special character"),
   
-  confirmPassword: Yup.string()
+  // confirmPassword: Yup.string()
     .required("Confirm Password is required")
     .oneOf([Yup.ref("password"), null], "Passwords must match"),
     
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data)
+    axios.post("http://localhost:3001/registration", data)
       .then((response) => {
         alert("Registration Successful")
         navigate("/signin");
@@ -87,10 +87,6 @@ function Register() {
       });
   };
   
-
-  const handleClick = () => {
-    navigate("/create-flyer");
-  };
 
   return (
     <div className="RegistrationPage">
@@ -132,8 +128,8 @@ function Register() {
             <option value="" disabled>
               Select your country code
             </option>
-            {countryCodes.map((country) => (
-              <option key={country.code} value={country.code}>
+            {countryCodes.map((country, index) => (
+              <option key={index} value={country.code}>
                 {country.name} ({country.code})
               </option>
             ))}
@@ -184,7 +180,7 @@ function Register() {
       <ErrorMessage name="confirmPassword" component="span" />
       <Field type="password" id="confirmPassword" name="confirmPassword" />
 
-      <button type="submit" disabled={isSubmitting}>Register
+      <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Register"}
       </button>
         </Form>
@@ -193,10 +189,6 @@ function Register() {
 
       <div className="submit">
       <h3 onClick={(()=> navigate("/login"))}>Click here to Login</h3>
-
-        <button type="button" onClick={handleClick}>
-          Create Avatar
-        </button>
       </div>
       
     </div>
