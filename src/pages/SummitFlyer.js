@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Cropper from 'react-easy-crop';
 import getCroppedImg from './utils/cropImage';
 import html2canvas from 'html2canvas';
-import backgroundImage from '../images/17th_summit_registration.jpg';
+import backgroundImage from '../images/current_summit.jpg';
 import blankImage from '../images/blank.png';
 import '../style/flyer.css';
 
