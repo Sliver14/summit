@@ -34,6 +34,7 @@ const CreateFlyer = () => {
     try {
       const croppedImage = await getCroppedImg(imageSrc, croppedAreaPixels);
       setFlyerImage(croppedImage);
+      window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})
     } catch (e) {
       console.error(e);
     }
