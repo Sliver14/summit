@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Cropper from 'react-easy-crop';
-import getCroppedImg from './utils/cropImage';
+import getCroppedImg from './utils/cropImage'; // Ensure this path is correct
 import html2canvas from 'html2canvas';
-import backgroundImage from '../images/current_summit.jpg';
-import blankImage from '../images/blank.png';
-import '../style/flyer.css';
+import backgroundImage from '../images/current_summit.jpg'; // Ensure this path is correct
+import blankImage from '../images/blank.png'; // Ensure this path is correct
+import '../style/flyer.css'; // Ensure this path is correct
 
 const CreateFlyer = () => {
   const [fileName, setFileName] = useState('');
@@ -34,6 +34,7 @@ const CreateFlyer = () => {
     try {
       const croppedImage = await getCroppedImg(imageSrc, croppedAreaPixels);
       setFlyerImage(croppedImage);
+      // Smooth scroll to the bottom after saving crop
       window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})
     } catch (e) {
       console.error(e);
@@ -43,8 +44,9 @@ const CreateFlyer = () => {
   const handleDownloadFlyer = () => {
     const flyerElement = document.getElementById('flyer');
     html2canvas(flyerElement, {
-      scale: 3,
-      useCORS: true,
+      scale: 3, // Increased scale for better resolution on download
+      useCORS: true, // Important if images are from different origins (though usually not for local imports)
+      // allowTaint: true, // Uncomment if you face CORS issues with images from other domains
     }).then((canvas) => {
       const link = document.createElement('a');
       link.download = 'flyer.png';
@@ -58,7 +60,7 @@ const CreateFlyer = () => {
       <h1 className="flyer-title">Create Your LWFS Summit Avatar</h1>
 
       <div className="flyer-grid">
-        {/* Cropper Section */}
+        {/* Cropper Section - This will be on the left on larger screens */}
         <div className="cropper-section">
           <div className="upload-container">
             <label htmlFor="file-upload" className="upload-button">
@@ -80,7 +82,7 @@ const CreateFlyer = () => {
                 image={imageSrc}
                 crop={crop}
                 zoom={zoom}
-                aspect={1}
+                aspect={1} // Aspect ratio for the crop area (1:1 for a square/circle avatar)
                 onCropChange={setCrop}
                 onZoomChange={setZoom}
                 onCropComplete={onCropComplete}
@@ -95,18 +97,23 @@ const CreateFlyer = () => {
           )}
         </div>
 
-        {/* Flyer Preview Section */}
+        {/* Flyer Preview Section - This will be on the right on larger screens */}
         <div className="flyer-preview-section">
           <div
             id="flyer"
             className="flyer-preview"
-            style={{
-              backgroundImage: `url(${backgroundImage})`,
-            }}
+            // The background image is now handled by an <img> tag inside
           >
+            {/* The actual background image for the flyer */}
+            <img
+              src={backgroundImage}
+              alt="Flyer Background"
+              className="flyer-background-image"
+            />
+            {/* The cropped user's avatar */}
             <img
               src={flyerImage}
-              alt="Cropped"
+              alt="Cropped Avatar"
               className="cropped-image"
             />
           </div>

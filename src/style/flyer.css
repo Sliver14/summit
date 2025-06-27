@@ -38,7 +38,7 @@
 /* Grid layout for cropper and flyer preview */
 .flyer-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* Stacked columns on smaller screens */
   gap: 2rem;
   width: 100%;
   max-width: 1200px;
@@ -46,11 +46,11 @@
 
 @media (min-width: 1024px) {
   .flyer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Two columns (left/right) on larger screens */
   }
 }
 
-/* Cropper section */
+/* Cropper section styling */
 .cropper-section {
   background: #ffffff;
   border-radius: 1rem;
@@ -59,7 +59,7 @@
   animation: fadeIn 0.5s ease-out;
 }
 
-/* Flyer preview section */
+/* Flyer preview section styling */
 .flyer-preview-section {
   background: #ffffff;
   border-radius: 1rem;
@@ -80,12 +80,12 @@
   margin-bottom: 1.5rem;
 }
 
-/* File input */
+/* File input (hidden) */
 .file-input {
   display: none;
 }
 
-/* Upload button */
+/* Upload button styling */
 .upload-button {
   padding: 0.75rem 2rem;
   background: #60a5fa;
@@ -147,30 +147,44 @@
   transform: translateY(-2px);
 }
 
-/* Flyer preview */
+/* Flyer preview container */
 .flyer-preview {
-  position: relative;
+  position: relative; /* Essential for positioning child elements */
   width: 100%;
-  max-width: 400px;
-  aspect-ratio: 1 / 1;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  max-width: 400px; /* Max width for the preview area */
+  aspect-ratio: 1 / 1; /* Maintain a 1:1 aspect ratio (square) */
   border-radius: 0.5rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  overflow: hidden; /* Ensures content stays within rounded corners */
+  display: flex; /* Use flexbox to center images if needed, or rely on absolute positioning */
+  justify-content: center;
+  align-items: center;
 }
 
-/* Cropped image */
+/* NEW: Style for the background image inside the flyer preview */
+.flyer-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire area, similar to background-size: cover */
+  z-index: 1; /* Puts it behind the cropped user image */
+}
+
+/* Cropped user image (avatar) */
 .cropped-image {
   position: absolute;
-  width: 30%;
-  height: auto;
-  border: 4px solid #fef08a;
-  border-radius: 50%;
-  top: 63%;
-  left: 18%;
-  transform: translate(-50%, -50%);
+  width: 30%; /* Adjust size relative to the flyer-preview */
+  height: auto; /* Maintain aspect ratio */
+  border: 4px solid #fef08a; /* Yellow border */
+  border-radius: 50%; /* Makes it a circle */
+  /* These values position the center of the cropped image */
+  top: 63%; /* Adjust vertical position */
+  left: 18%; /* Adjust horizontal position */
+  transform: translate(-50%, -50%); /* Centers the image based on its own dimensions */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2; /* Puts it in front of the background image */
 }
 
 /* Download button */
@@ -195,7 +209,7 @@
   transform: translateY(-2px);
 }
 
-/* Fade-in animation */
+/* Fade-in animation for sections */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -207,7 +221,7 @@
   }
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for smaller screens */
 @media (max-width: 1023px) {
   .flyer-container {
     padding: 1.5rem;
